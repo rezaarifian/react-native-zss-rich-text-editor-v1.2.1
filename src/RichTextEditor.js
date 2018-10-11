@@ -300,9 +300,9 @@ export default class RichTextEditor extends Component {
     return (
       <View style={rootStyle}>
         <WebViewBridge
-          {...this.props}
           hideKeyboardAccessoryView={true}
           keyboardDisplayRequiresUserAction={false}
+          {...this.props}
           ref={(r) => {this.webviewBridge = r}}
           onBridgeMessage={(message) => this.onBridgeMessage(message)}
           injectedJavaScript={injectScript}
