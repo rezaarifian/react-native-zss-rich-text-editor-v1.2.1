@@ -84,6 +84,9 @@ export default class RichTextEditor extends Component {
   }
 
   _onKeyboardWillHide(event) {
+    if (this.state.keyboardHeight !== 0) {
+      this.setEditorAvailableHeightBasedOnKeyboardHeight(0);
+    }
     this.setState({keyboardHeight: 0});
   }
 
@@ -99,7 +102,6 @@ export default class RichTextEditor extends Component {
   onBridgeMessage(str){
     try {
       const message = JSON.parse(str);
-
       switch (message.type) {
         case messages.TITLE_HTML_RESPONSE:
           if (this.titleResolve) {
@@ -294,8 +296,9 @@ export default class RichTextEditor extends Component {
   render() {
     //in release build, external html files in Android can't be required, so they must be placed in the assets folder and accessed via uri
     const pageSource = PlatformIOS ? require('./editor.html') : { uri: 'file:///android_asset/editor.html' };
+    const rootStyle = PlatformIOS ? { flex: 1 } : { flex: 1, marginBottom: (this.state.keyboardHeight + this.props.bottomSpacing) || 0 }
     return (
-      <View style={{flex: 1}}>
+      <View style={rootStyle}>
         <WebViewBridge
           {...this.props}
           hideKeyboardAccessoryView={true}
