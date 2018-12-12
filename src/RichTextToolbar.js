@@ -39,6 +39,10 @@ export default class RichTextToolbar extends Component {
     iconMap: PropTypes.object,
   };
 
+  static defaultProps = {
+    avoidKeyboard: true
+  };
+
   constructor(props) {
     super(props);
     const actions = this.props.actions ? this.props.actions : defaultActions;
@@ -79,7 +83,7 @@ export default class RichTextToolbar extends Component {
     } else {
       editor.registerToolbar((selectedItems) => this.setSelectedItems(selectedItems));
       this.setState({editor});
-      if (Platform.OS !== "ios" && this.props.avoidKeyboard){
+      if (this.props.avoidKeyboard && Platform.OS !== "ios"){
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
       }
@@ -145,9 +149,16 @@ export default class RichTextToolbar extends Component {
   }
 
   render() {
+    const { keyboardSpacing = 0 } = this.state
+    const { avoidKeyboard } = this.props
+    const rootStyles = [
+      { height: 50, backgroundColor: '#D3D3D3', alignItems: 'center' },
+      avoidKeyboard && Platform.OS !== "ios" ? { marginBottom: keyboardSpacing } : {},
+      this.props.style
+    ]
     return (
       <View
-          style={[{height: 50, backgroundColor: '#D3D3D3', alignItems: 'center'},Platform.OS !== "ios" ?{ marginBottom: this.state.keyboardSpacing}: {}, this.props.style]}
+          style={rootStyles}
       >
         <ListView
             horizontal
