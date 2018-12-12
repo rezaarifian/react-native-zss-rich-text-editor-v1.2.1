@@ -64,7 +64,7 @@ export default class RichTextToolbar extends Component {
     this.setState({keyboardSpacing: e.endCoordinates.height})
   }
 
-  componentDidReceiveProps(newProps) {
+  componentWillReceiveProps(newProps) {
     const actions = newProps.actions ? newProps.actions : defaultActions;
     this.setState({
       actions,
