@@ -1,11 +1,12 @@
 # React Native Rich Text Editor
 
+## Note: As the original [repo](https://github.com/wix/react-native-zss-rich-text-editor) does not seem to be active anymore I've decided to republish this fork on npm under a new name. 
 A fully functional Rich Text Editor for both Android and iOS, based off the [ZSSRichTextEditor](https://github.com/nnhubbard/ZSSRichTextEditor/tree/master/ZSSRichTextEditor) project. 
 
 ## Installation
 
 ```
-npm i --save react-native-zss-rich-text-editor@https://github.com/arneson/react-native-zss-rich-text-editor#[version-tag]
+npm i --save react-native-rich-text-editor
 ```
 
 On Android, add the following to the end of your `android/app/build.gradle`
@@ -22,7 +23,7 @@ Also, follow instructions [here](https://github.com/alinz/react-native-webview-b
 
 ## Usage
 
-`react-native-zss-rich-text-editor` exports two Components and one const dictionary:
+`react-native-rich-text-editor` exports two Components and one const dictionary:
 
 ## `RichTextEditor`
 
@@ -274,4 +275,5 @@ This is a set of consts of all supported actions. These will be passed in arrays
 
 ## Attribution
 
-`react-native-zss-rich-text-editor` is a wrapper around the amazing [ZSSRichTextEditor](https://github.com/nnhubbard/ZSSRichTextEditor/tree/master/ZSSRichTextEditor) project. It also communicates with the editor using the awesome [react-native-webview-bridge](https://github.com/alinz/react-native-webview-bridge) project.
+`react-native-rich-text-editor` is originally published by wix in this [repo](https://github.com/wix/react-native-zss-rich-text-editor) 
+`react-native-rich-text-editor` is a wrapper around the amazing [ZSSRichTextEditor](https://github.com/nnhubbard/ZSSRichTextEditor/tree/master/ZSSRichTextEditor) project. It also communicates with the editor using the awesome [react-native-webview-bridge](https://github.com/alinz/react-native-webview-bridge) project.
